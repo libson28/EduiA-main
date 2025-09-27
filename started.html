@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commencer maintenant - EduiA</title>
+    <link rel="stylesheet" href="started.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <!-- <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>EduiA</h1>
+                        <span class="tagline">Apprendre ensemble</span>
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">← Retour à l'accueil</a></li>
+                    <li><a href="#connexion" class="btn-login">Se connecter</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header> -->
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid container">
+            <a class="navbar-brand text-primary" href="#">
+                <h2>EduiA</h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <div class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 30px; font-size: 18px;">
+
+                </div>
+
+                <a href="EduiA.html">
+                    <button class="btn btn-outline-primary" type="submit"> ← retour à l'accueil</button>
+                </a>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section principale -->
+    <main class="signup-main">
+        <div class="container">
+            <!-- Étapes de progression -->
+            <div class="barre-progression">
+                <div class="etape-progression active" data-etape="1">
+                    <div class="numero-etape">1</div>
+                    <div class="libelle-etape">Profil</div>
+                </div>
+                <div class="etape-progression" data-etape="2">
+                    <div class="numero-etape">2</div>
+                    <div class="libelle-etape">Enfant(s)</div>
+                </div>
+                <div class="etape-progression" data-etape="3">
+                    <div class="numero-etape">3</div>
+                    <div class="libelle-etape">Confirmation</div>
+                </div>
+            </div>
+
+
+            <!-- Contenu principal -->
+            <div class="signup-content">
+                <!-- Étape 1: Création du profil parent -->
+                <div class="signup-step active" id="step-1">
+                    <div class="step-header">
+                        <h2>Créons votre compte</h2>
+                        <p>Commencez l'aventure éducative avec EduiA</p>
+                    </div>
+
+                    <form class="signup-form" id="parent-form">
+                        <div class="form-group">
+                            <label for="parent-name">Nom complet *</label>
+                            <input type="text" id="parent-name" name="parent-name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Adresse e-mail *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Numéro de téléphone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">Localisation</label>
+                            <input type="text" id="location" name="location" placeholder="Village, commune, région">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Mot de passe *</label>
+                            <input type="password" id="password" name="password" required>
+                            <small>Au moins 8 caractères, avec lettres et chiffres</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm-password">Confirmer le mot de passe *</label>
+                            <input type="password" id="confirm-password" name="confirm-password" required>
+                        </div>
+
+                        <button type="button" class="btn btn-primary" onclick="nextStep(2)">
+                            Continuer
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Étape 2: Ajout des enfants -->
+                <div class="signup-step" id="step-2">
+                    <div class="step-header">
+                        <h2>Parlez-nous de vos enfants</h2>
+                        <p>L'IA d'EduiA s'adaptera à chaque enfant</p>
+                    </div>
+
+                    <div class="children-container">
+                        <div class="child-form" id="child-1">
+                            <h3>Premier enfant</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="child1-name">Prénom *</label>
+                                    <input type="text" id="child1-name" name="child1-name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="child1-age">Âge *</label>
+                                    <select id="child1-age" name="child1-age" required>
+                                        <option value="">Choisir l'âge</option>
+                                        <option value="3">3 ans</option>
+                                        <option value="4">4 ans</option>
+                                        <option value="5">5 ans</option>
+                                        <option value="6">6 ans</option>
+                                        <option value="7">7 ans</option>
+                                        <option value="8">8 ans</option>
+                                        <option value="9">9 ans</option>
+                                        <option value="10">10 ans</option>
+                                        <option value="11">11 ans</option>
+                                        <option value="12">12 ans</option>
+                                        <option value="13">13 ans</option>
+                                        <option value="14">14 ans</option>
+                                        <option value="15">15 ans</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="child1-level">Niveau scolaire</label>
+                                <select id="child1-level" name="child1-level">
+                                    <option value="">Choisir le niveau</option>
+                                    <option value="maternelle">Maternelle</option>
+                                    <option value="cp">CP</option>
+                                    <option value="ce1">CE1</option>
+                                    <option value="ce2">CE2</option>
+                                    <option value="cm1">CM1</option>
+                                    <option value="cm2">CM2</option>
+                                    <option value="6eme">6ème</option>
+                                    <option value="5eme">5ème</option>
+                                    <option value="4eme">4ème</option>
+                                    <option value="3eme">3ème</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="child1-interests">Centres d'intérêt</label>
+                                <div class="interests-grid">
+                                    <label class="interest-item">
+                                        <input type="checkbox" name="child1-interests" value="mathematiques">
+                                        <span>Mathématiques</span>
+                                    </label>
+                                    <label class="interest-item">
+                                        <input type="checkbox" name="child1-interests" value="lecture">
+                                        <span>Lecture</span>
+                                    </label>
+                                    <label class="interest-item">
+                                        <input type="checkbox" name="child1-interests" value="sciences">
+                                        <span>Sciences</span>
+                                    </label>
+                                    <label class="interest-item">
+                                        <input type="checkbox" name="child1-interests" value="arts">
+                                        <span>Arts</span>
+                                    </label>
+                                    <label class="interest-item">
+                                        <input type="checkbox" name="child1-interests" value="musique">
+                                        <span>Musique</span>
+                                    </label>
+                                    <label class="interest-item">
+                                        <input type="checkbox" name="child1-interests" value="sport">
+                                        <span>Sport</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="add-child-section">
+                        <button type="button" class="btn btn-outline" onclick="addChild()">
+                            + Ajouter un autre enfant
+                        </button>
+                    </div>
+
+                    <div class="step-navigation">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(1)">
+                            ← Précédent
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep(3)">
+                            Continuer
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Étape 3: Confirmation et plan -->
+                <div class="signup-step" id="step-3">
+                    <div class="step-header">
+                        <h2>Choisissez votre plan</h2>
+                        <p>Commencez gratuitement, passez à un plan premium quand vous le souhaitez</p>
+                    </div>
+
+                    <div class="plans-container">
+                        <div class="plan-card">
+                            <div class="plan-header">
+                                <h3>Gratuit</h3>
+                                <div class="plan-price">4500f<span>/mois</span></div>
+                            </div>
+                            <ul class="plan-features">
+                                <li>✓ 1 enfant</li>
+                                <li>✓ Contenu de base</li>
+                                <li>✓ Suivi des progrès</li>
+                                <li>✓ Support par email</li>
+                                <li>⚡ IA d'assistance de base</li>
+                            </ul>
+                            <button class="btn btn-outline plan-select" data-plan="free">
+                                Choisir ce plan
+                            </button>
+                        </div>
+
+                        <div class="plan-card featured">
+                            <div class="plan-badge">Recommandé</div>
+                            <div class="plan-header">
+                                <h3>Famille</h3>
+                                <div class="plan-price">10000<span>/mois</span></div>
+                            </div>
+                            <ul class="plan-features">
+                                <li>✓ Enfants illimités</li>
+                                <li>✓ Tout le contenu premium</li>
+                                <li>✓ Rapports détaillés</li>
+                                <li>✓ Support prioritaire</li>
+                                <li>🤖 IA avancée personnalisée</li>
+                                <li>📱 Application mobile</li>
+                                <li>🎯 Parcours sur mesure</li>
+                            </ul>
+                            <button class="btn btn-primary plan-select" data-plan="family">
+                                Choisir ce plan
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="confirmation-section">
+                        <div class="terms">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="terms" required>
+                                <span class="checkmark"></span>
+                                J'accepte les <a href="#terms">conditions d'utilisation</a> et la <a
+                                    href="#privacy">politique de confidentialité</a>
+                            </label>
+                        </div>
+
+                        <div class="newsletter">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="newsletter" checked>
+                                <span class="checkmark"></span>
+                                Je souhaite recevoir des conseils pédagogiques par email
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="step-navigation">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(2)">
+                            ← Précédent
+                        </button>
+                        <a href="espacePerso.html">
+                            <button type="button" class="btn btn-primary btn-large" onclick="completeSignup()">
+                                🚀 Commencer l'aventure !
+                            </button>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Section de confiance -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-content">
+                <div class="trust-item">
+                    <div class="trust-icon">🔒</div>
+                    <div class="trust-text">
+                        <h4>Sécurisé</h4>
+                        <p>Vos données sont protégées</p>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">🎯</div>
+                    <div class="trust-text">
+                        <h4>Personnalisé</h4>
+                        <p>IA adaptée à chaque enfant</p>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">📞</div>
+                    <div class="trust-text">
+                        <h4>Support</h4>
+                        <p>Équipe dédiée disponible</p>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">💝</div>
+                    <div class="trust-text">
+                        <h4>Gratuit</h4>
+                        <p>Commencez sans engagement</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        // Variables globales
+        let currentStep = 1;
+        let childCount = 1;
+        let selectedPlan = null;
+
+        // Gestion de la navigation entre étapes
+        function nextStep(stepNumber) {
+            // Validation de l'étape actuelle
+            if (!validateCurrentStep()) {
+                return;
+            }
+
+            // Masquer l'étape actuelle
+            document.getElementById(`step-${currentStep}`).classList.remove('active');
+
+            // Afficher la nouvelle étape
+            document.getElementById(`step-${stepNumber}`).classList.add('active');
+
+            // Mettre à jour la barre de progression
+            updateProgressBar(stepNumber);
+
+            currentStep = stepNumber;
+
+            // Scroll vers le haut
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function prevStep(stepNumber) {
+            // Masquer l'étape actuelle
+            document.getElementById(`step-${currentStep}`).classList.remove('active');
+
+            // Afficher la nouvelle étape
+            document.getElementById(`step-${stepNumber}`).classList.add('active');
+
+            // Mettre à jour la barre de progression
+            updateProgressBar(stepNumber);
+
+            currentStep = stepNumber;
+
+            // Scroll vers le haut
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mise à jour de la barre de progression
+        function updateProgressBar(activeStep) {
+            // Supprimer les classes active et completed de toutes les étapes
+            document.querySelectorAll('.etape-progression').forEach(step => {
+                step.classList.remove('active', 'completed');
+            });
+
+            // Marquer les étapes précédentes comme complétées
+            for (let i = 1; i < activeStep; i++) {
+                const stepElement = document.querySelector(`[data-etape="${i}"]`);
+                if (stepElement) {
+                    stepElement.classList.add('completed');
+                }
+            }
+
+            // Marquer l'étape actuelle comme active
+            const activeStepElement = document.querySelector(`[data-etape="${activeStep}"]`);
+            if (activeStepElement) {
+                activeStepElement.classList.add('active');
+            }
+        }
+
+        // Validation des étapes
+        function validateCurrentStep() {
+            if (currentStep === 1) {
+                return validateStep1();
+            } else if (currentStep === 2) {
+                return validateStep2();
+            } else if (currentStep === 3) {
+                return validateStep3();
+            }
+            return true;
+        }
+
+        // Validation étape 1 - Profil parent
+        function validateStep1() {
+            const form = document.getElementById('parent-form');
+            const requiredInputs = form.querySelectorAll('input[required]');
+            let isValid = true;
+            let errors = [];
+
+            // Vérifier les champs obligatoires
+            requiredInputs.forEach(input => {
+                if (!input.value.trim()) {
+                    input.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    input.classList.remove('is-invalid');
+                }
+            });
+
+            // Validation email
+            const email = document.getElementById('email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email.value && !emailRegex.test(email.value)) {
+                email.classList.add('is-invalid');
+                errors.push('Veuillez entrer une adresse email valide');
+                isValid = false;
+            }
+
+            // Validation mot de passe
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (password.length < 8) {
+                document.getElementById('password').classList.add('is-invalid');
+                errors.push('Le mot de passe doit contenir au moins 8 caractères');
+                isValid = false;
+            }
+
+            if (password !== confirmPassword) {
+                document.getElementById('confirm-password').classList.add('is-invalid');
+                errors.push('Les mots de passe ne correspondent pas');
+                isValid = false;
+            }
+
+            // Afficher les erreurs
+            if (!isValid) {
+                showAlert(errors.length > 0 ? errors.join('\n') : 'Veuillez remplir tous les champs obligatoires', 'error');
+            }
+
+            return isValid;
+        }
+
+        // Validation étape 2 - Enfants
+        function validateStep2() {
+            const childName = document.getElementById('child1-name');
+            const childAge = document.getElementById('child1-age');
+            let isValid = true;
+
+            if (!childName.value.trim()) {
+                childName.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                childName.classList.remove('is-invalid');
+            }
+
+            if (!childAge.value) {
+                childAge.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                childAge.classList.remove('is-invalid');
+            }
+
+            if (!isValid) {
+                showAlert('Veuillez renseigner au minimum le prénom et l\'âge du premier enfant', 'error');
+            }
+
+            return isValid;
+        }
+
+        // Validation étape 3 - Confirmation
+        function validateStep3() {
+            const termsCheckbox = document.getElementById('terms');
+
+            if (!termsCheckbox.checked) {
+                showAlert('Vous devez accepter les conditions d\'utilisation pour continuer', 'error');
+                return false;
+            }
+
+            if (!selectedPlan) {
+                showAlert('Veuillez sélectionner un plan', 'error');
+                return false;
+            }
+
+            return true;
+        }
+
+        // Gestion des enfants
+        function addChild() {
+            childCount++;
+            const container = document.querySelector('.children-container');
+            const newChild = document.createElement('div');
+            newChild.className = 'child-form';
+            newChild.id = `child-${childCount}`;
+
+            newChild.innerHTML = `
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>Enfant ${childCount}</h3>
+            <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeChild(${childCount})">
+                <i class="fas fa-times"></i> Supprimer
+            </button>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="child${childCount}-name">Prénom *</label>
+                <input type="text" id="child${childCount}-name" name="child${childCount}-name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="child${childCount}-age">Âge *</label>
+                <select id="child${childCount}-age" name="child${childCount}-age" class="form-control" required>
+                    <option value="">Choisir l'âge</option>
+                    <option value="3">3 ans</option>
+                    <option value="4">4 ans</option>
+                    <option value="5">5 ans</option>
+                    <option value="6">6 ans</option>
+                    <option value="7">7 ans</option>
+                    <option value="8">8 ans</option>
+                    <option value="9">9 ans</option>
+                    <option value="10">10 ans</option>
+                    <option value="11">11 ans</option>
+                    <option value="12">12 ans</option>
+                    <option value="13">13 ans</option>
+                    <option value="14">14 ans</option>
+                    <option value="15">15 ans</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="child${childCount}-level">Niveau scolaire</label>
+            <select id="child${childCount}-level" name="child${childCount}-level" class="form-control">
+                <option value="">Choisir le niveau</option>
+                <option value="maternelle">Maternelle</option>
+                <option value="cp">CP</option>
+                <option value="ce1">CE1</option>
+                <option value="ce2">CE2</option>
+                <option value="cm1">CM1</option>
+                <option value="cm2">CM2</option>
+                <option value="6eme">6ème</option>
+                <option value="5eme">5ème</option>
+                <option value="4eme">4ème</option>
+                <option value="3eme">3ème</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="child${childCount}-interests">Centres d'intérêt</label>
+            <div class="interests-grid">
+                <label class="interest-item">
+                    <input type="checkbox" name="child${childCount}-interests" value="mathematiques">
+                    <span>Mathématiques</span>
+                </label>
+                <label class="interest-item">
+                    <input type="checkbox" name="child${childCount}-interests" value="lecture">
+                    <span>Lecture</span>
+                </label>
+                <label class="interest-item">
+                    <input type="checkbox" name="child${childCount}-interests" value="sciences">
+                    <span>Sciences</span>
+                </label>
+                <label class="interest-item">
+                    <input type="checkbox" name="child${childCount}-interests" value="arts">
+                    <span>Arts</span>
+                </label>
+                <label class="interest-item">
+                    <input type="checkbox" name="child${childCount}-interests" value="musique">
+                    <span>Musique</span>
+                </label>
+                <label class="interest-item">
+                    <input type="checkbox" name="child${childCount}-interests" value="sport">
+                    <span>Sport</span>
+                </label>
+            </div>
+        </div>
+    `;
+
+            container.appendChild(newChild);
+
+            // Animation d'apparition
+            newChild.style.opacity = '0';
+            newChild.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                newChild.style.transition = 'all 0.3s ease';
+                newChild.style.opacity = '1';
+                newChild.style.transform = 'translateY(0)';
+            }, 100);
+        }
+
+        function removeChild(childId) {
+            if (childCount > 1) {
+                const childElement = document.getElementById(`child-${childId}`);
+                if (childElement) {
+                    childElement.style.transition = 'all 0.3s ease';
+                    childElement.style.opacity = '0';
+                    childElement.style.transform = 'translateY(-20px)';
+
+                    setTimeout(() => {
+                        childElement.remove();
+                    }, 300);
+                }
+            } else {
+                showAlert('Vous devez avoir au moins un enfant', 'warning');
+            }
+        }
+
+        // Gestion des plans
+        function selectPlan(planType) {
+            selectedPlan = planType;
+
+            // Supprimer la sélection précédente
+            document.querySelectorAll('.plan-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+
+            // Sélectionner le nouveau plan
+            const selectedCard = document.querySelector(`[data-plan="${planType}"]`).closest('.plan-card');
+            selectedCard.classList.add('selected');
+        }
+
+        // Initialiser les événements des plans
+        document.addEventListener('DOMContentLoaded', function () {
+            const planButtons = document.querySelectorAll('.plan-select');
+            planButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const plan = this.getAttribute('data-plan');
+                    selectPlan(plan);
+                });
+            });
+        });
+
+        // Finalisation de l'inscription
+        function completeSignup() {
+            if (!validateStep3()) {
+                return;
+            }
+
+            // Collecter toutes les données
+            const formData = collectFormData();
+
+            // Simulation de l'envoi des données
+            showLoadingSpinner();
+
+            setTimeout(() => {
+                hideLoadingSpinner();
+                showSuccessMessage();
+
+                // Redirection vers le dashboard après 3 secondes
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 3000);
+            }, 2000);
+        }
+
+        // Collecte des données du formulaire
+        function collectFormData() {
+            const data = {
+                parent: {
+                    name: document.getElementById('parent-name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    location: document.getElementById('location').value,
+                    password: document.getElementById('password').value
+                },
+                children: [],
+                plan: selectedPlan,
+                newsletter: document.getElementById('newsletter').checked
+            };
+
+            // Collecter les informations des enfants
+            for (let i = 1; i <= childCount; i++) {
+                const nameInput = document.getElementById(`child${i}-name`);
+                const ageInput = document.getElementById(`child${i}-age`);
+                const levelInput = document.getElementById(`child${i}-level`);
+
+                if (nameInput && nameInput.value.trim()) {
+                    const interests = [];
+                    const interestCheckboxes = document.querySelectorAll(`input[name="child${i}-interests"]:checked`);
+                    interestCheckboxes.forEach(checkbox => {
+                        interests.push(checkbox.value);
+                    });
+
+                    data.children.push({
+                        name: nameInput.value,
+                        age: ageInput.value,
+                        level: levelInput.value,
+                        interests: interests
+                    });
+                }
+            }
+
+            return data;
+        }
+
+        // Fonctions utilitaires
+        function showAlert(message, type = 'info') {
+            // Créer l'alerte Bootstrap
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type === 'error' ? 'danger' : type} alert-dismissible fade show position-fixed`;
+            alertDiv.style.cssText = 'top: 100px; right: 20px; z-index: 9999; max-width: 400px;';
+
+            alertDiv.innerHTML = `
+        ${message.replace(/\n/g, '<br>')}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+
+            document.body.appendChild(alertDiv);
+
+            // Supprimer automatiquement après 5 secondes
+            setTimeout(() => {
+                if (alertDiv.parentNode) {
+                    alertDiv.remove();
+                }
+            }, 5000);
+        }
+
+        function showLoadingSpinner() {
+            const spinner = document.createElement('div');
+            spinner.id = 'loading-spinner';
+            spinner.className = 'position-fixed top-50 start-50 translate-middle';
+            spinner.style.zIndex = '9999';
+
+            spinner.innerHTML = `
+        <div class="text-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Chargement...</span>
+            </div>
+            <div class="mt-3 text-primary fw-bold">Création de votre compte...</div>
+        </div>
+    `;
+
+            // Ajouter un overlay
+            const overlay = document.createElement('div');
+            overlay.id = 'loading-overlay';
+            overlay.className = 'position-fixed top-0 start-0 w-100 h-100';
+            overlay.style.cssText = 'background: rgba(255,255,255,0.8); z-index: 9998;';
+
+            document.body.appendChild(overlay);
+            document.body.appendChild(spinner);
+        }
+
+        function hideLoadingSpinner() {
+            const spinner = document.getElementById('loading-spinner');
+            const overlay = document.getElementById('loading-overlay');
+
+            if (spinner) spinner.remove();
+            if (overlay) overlay.remove();
+        }
+
+        function showSuccessMessage() {
+            const successDiv = document.createElement('div');
+            successDiv.className = 'position-fixed top-50 start-50 translate-middle text-center';
+            successDiv.style.cssText = 'z-index: 9999; background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);';
+
+            successDiv.innerHTML = `
+        <div class="text-success mb-3">
+            <i class="fas fa-check-circle" style="font-size: 4rem;"></i>
+        </div>
+        <h3 class="text-success">Félicitations ! 🎉</h3>
+        <p class="text-muted">Votre compte a été créé avec succès.</p>
+        <p class="text-muted">Redirection vers votre espace personnel...</p>
+        <div class="mt-3">
+            <div class="spinner-border spinner-border-sm text-primary" role="status">
+                <span class="visually-hidden">Redirection...</span>
+            </div>
+        </div>
+    `;
+
+            // Overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'position-fixed top-0 start-0 w-100 h-100';
+            overlay.style.cssText = 'background: rgba(0,0,0,0.5); z-index: 9998;';
+
+            document.body.appendChild(overlay);
+            document.body.appendChild(successDiv);
+        }
+
+        // Amélioration de l'UX avec des validations en temps réel
+        document.addEventListener('DOMContentLoaded', function () {
+            // Validation en temps réel des champs
+            const inputs = document.querySelectorAll('input[required]');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function () {
+                    if (this.value.trim()) {
+                        this.classList.remove('is-invalid');
+                        this.classList.add('is-valid');
+                    }
+                });
+            });
+
+            // Validation du mot de passe en temps réel
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirm-password');
+
+            password.addEventListener('input', function () {
+                if (this.value.length >= 8) {
+                    this.classList.remove('is-invalid');
+                    this.classList.add('is-valid');
+                }
+            });
+
+            confirmPassword.addEventListener('input', function () {
+                if (this.value === password.value && this.value.length > 0) {
+                    this.classList.remove('is-invalid');
+                    this.classList.add('is-valid');
+                }
+            });
+        });
+
+        // Fonction pour revenir à l'accueil
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+
+</html>

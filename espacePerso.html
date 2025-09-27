@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Personnel - EduiA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container-fluid">
+            <button class="btn btn-outline-primary me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <div>
+                    <h4 class="mb-0 text-primary fw-bold">EduiA</h4>
+                    <small class="text-muted">Espace Personnel</small>
+                </div>
+            </a>
+
+            <div class="navbar-nav ms-auto d-flex flex-row align-items-center">
+               
+                </div>
+                
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS-10YvgUS0dNatY71Bq2N8xdogpzuboCa-A&s" 
+                             alt="Avatar" class="rounded-circle me-2" width="32" height="32">
+                        <span class="d-none d-md-inline">Fatou diop</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profil</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Paramètres</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="EduiA.html" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Déconnexion</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar Offcanvas -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
+        <div class="offcanvas-header bg-primary text-white">
+            <h5 class="offcanvas-title" id="offcanvasSidebarLabel">
+                <i class="fas fa-graduation-cap me-2"></i>Menu Principal
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <nav class="nav nav-pills flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button class="nav-link active d-flex align-items-center p-3 border-0 rounded-0 text-start" 
+                        id="v-pills-dashboard-tab" data-bs-toggle="pill" data-bs-target="#v-pills-dashboard" 
+                        type="button" role="tab" aria-controls="v-pills-dashboard" aria-selected="true">
+                    <i class="fas fa-tachometer-alt me-3 text-primary"></i>
+                    <span>Tableau de bord</span>
+                </button>
+                
+                <button class="nav-link d-flex align-items-center p-3 border-0 rounded-0 text-start" 
+                        id="v-pills-courses-tab" data-bs-toggle="pill" data-bs-target="#v-pills-courses" 
+                        type="button" role="tab" aria-controls="v-pills-courses" aria-selected="false">
+                    <i class="fas fa-book me-3 text-primary"></i>
+                    <span>Mes Cours</span>
+                </button>
+                
+                <button class="nav-link d-flex align-items-center p-3 border-0 rounded-0 text-start" 
+                        id="v-pills-history-tab" data-bs-toggle="pill" data-bs-target="#v-pills-history" 
+                        type="button" role="tab" aria-controls="v-pills-history" aria-selected="false">
+                    <i class="fas fa-history me-3 text-primary"></i>
+                    <span>Historique</span>
+                </button>
+                
+                <button class="nav-link d-flex align-items-center p-3 border-0 rounded-0 text-start" 
+                        id="v-pills-progress-tab" data-bs-toggle="pill" data-bs-target="#v-pills-progress" 
+                        type="button" role="tab" aria-controls="v-pills-progress" aria-selected="false">
+                    <i class="fas fa-chart-line me-3 text-primary"></i>
+                    <span>Progression</span>
+                </button>
+                
+                <button class="nav-link d-flex align-items-center p-3 border-0 rounded-0 text-start" 
+                        id="v-pills-chat-tab" data-bs-toggle="pill" data-bs-target="#v-pills-chat" 
+                        type="button" role="tab" aria-controls="v-pills-chat" aria-selected="false">
+                    <i class="fas fa-robot me-3 text-primary"></i>
+                    <span>Assistant IA</span>
+                </button>
+            </nav>
+             <div class="nav-item dropdown me-3">
+                    <select class="form-select form-select-sm" id="child-select" onchange="switchChild()">
+                        <option value="Mouhamed">Mouhamed (8 ans)</option>
+                        <option value="Amina">Amina (10 ans)</option>
+                    </select>
+                </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container-fluid" style="margin-top: 80px;">
+        <div class="tab-content" id="v-pills-tabContent">
+            
+            <!-- Dashboard Tab -->
+            <div class="tab-pane fade show active" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div>
+                                <h2 class="display-6 fw-bold text-dark">Bienvenue, Mouhamed ! 👋</h2>
+                                <p class="lead text-muted">Continuons ton apprentissage avec EduiA</p>
+                            </div>
+                        </div>
+
+                        <!-- Stats Cards -->
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <div class="card-body d-flex align-items-center">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-primary bg-opacity-10 rounded-circle p-3">
+                                                <i class="fas fa-clock text-primary fs-4"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <div class="fw-bold fs-4 text-dark">2h 45min</div>
+                                            <div class="text-muted small">Temps d'étude aujourd'hui</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <div class="card-body d-flex align-items-center">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-3">
+                                                <i class="fas fa-target text-success fs-4"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <div class="fw-bold fs-4 text-dark">12/15</div>
+                                            <div class="text-muted small">Exercices réussis</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <div class="card-body d-flex align-items-center">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-warning bg-opacity-10 rounded-circle p-3">
+                                                <i class="fas fa-trophy text-warning fs-4"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <div class="fw-bold fs-4 text-dark">3</div>
+                                            <div class="text-muted small">Badges obtenus</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <div class="card-body d-flex align-items-center">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-info bg-opacity-10 rounded-circle p-3">
+                                                <i class="fas fa-bolt text-info fs-4"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <div class="fw-bold fs-4 text-dark">85%</div>
+                                            <div class="text-muted small">Score moyen</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="row">
+                            <div class="col-12">
+                                <h4 class="mb-3">Actions rapides</h4>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <div class="card border-0 shadow-sm h-100 action-card" onclick="showCourses()">
+                                    <div class="card-body text-center p-4">
+                                        <div class="bg-primary bg-opacity-10 rounded-circle mx-auto mb-3" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fas fa-rocket text-primary fs-1"></i>
+                                        </div>
+                                        <h5 class="card-title">Nouveau cours</h5>
+                                        <p class="card-text text-muted">Commencer un nouveau cours avec l'IA</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <div class="card border-0 shadow-sm h-100 action-card" onclick="showHistory()">
+                                    <div class="card-body text-center p-4">
+                                        <div class="bg-success bg-opacity-10 rounded-circle mx-auto mb-3" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fas fa-book-open text-success fs-1"></i>
+                                        </div>
+                                        <h5 class="card-title">Reprendre un cours</h5>
+                                        <p class="card-text text-muted">Continuer là où tu t'es arrêté</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-3">
+                                <div class="card border-0 shadow-sm h-100 action-card" onclick="showProgress()">
+                                    <div class="card-body text-center p-4">
+                                        <div class="bg-info bg-opacity-10 rounded-circle mx-auto mb-3" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fas fa-chart-bar text-info fs-1"></i>
+                                        </div>
+                                        <h5 class="card-title">Voir mes progrès</h5>
+                                        <p class="card-text text-muted">Suivre ta progression par matière</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Courses Tab -->
+            <div class="tab-pane fade" id="v-pills-courses" role="tabpanel" aria-labelledby="v-pills-courses-tab">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-4">
+                            <h2 class="display-6 fw-bold text-dark">Choisir une matière</h2>
+                            <p class="lead text-muted">Sélectionne la matière que tu veux étudier</p>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card border-0 shadow-sm h-100 subject-card" onclick="startCourse('mathematiques')">
+                                    <div class="card-body text-center p-4">
+                                        <div class="fs-1 mb-3">🔢</div>
+                                        <h5 class="card-title">Mathématiques</h5>
+                                        <p class="card-text text-muted">Calculs, géométrie, problèmes</p>
+                                        <span class="badge bg-primary">Niveau CE2</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card border-0 shadow-sm h-100 subject-card" onclick="startCourse('francais')">
+                                    <div class="card-body text-center p-4">
+                                        <div class="fs-1 mb-3">📖</div>
+                                        <h5 class="card-title">Français</h5>
+                                        <p class="card-text text-muted">Lecture, écriture, grammaire</p>
+                                        <span class="badge bg-primary">Niveau CE2</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card border-0 shadow-sm h-100 subject-card" onclick="startCourse('sciences')">
+                                    <div class="card-body text-center p-4">
+                                        <div class="fs-1 mb-3">🔬</div>
+                                        <h5 class="card-title">Sciences</h5>
+                                        <p class="card-text text-muted">Découverte du monde</p>
+                                        <span class="badge bg-primary">Niveau CE2</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card border-0 shadow-sm h-100 subject-card" onclick="startCourse('histoire')">
+                                    <div class="card-body text-center p-4">
+                                        <div class="fs-1 mb-3">🏛️</div>
+                                        <h5 class="card-title">Histoire</h5>
+                                        <p class="card-text text-muted">Découverte du passé</p>
+                                        <span class="badge bg-primary">Niveau CE2</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card border-0 shadow-sm h-100 subject-card" onclick="startCourse('geographie')">
+                                    <div class="card-body text-center p-4">
+                                        <div class="fs-1 mb-3">🌍</div>
+                                        <h5 class="card-title">Géographie</h5>
+                                        <p class="card-text text-muted">Explorer le monde</p>
+                                        <span class="badge bg-primary">Niveau CE2</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card border-0 shadow-sm h-100 subject-card" onclick="startCourse('anglais')">
+                                    <div class="card-body text-center p-4">
+                                        <div class="fs-1 mb-3">🇬🇧</div>
+                                        <h5 class="card-title">Anglais</h5>
+                                        <p class="card-text text-muted">Première langue étrangère</p>
+                                        <span class="badge bg-success">Débutant</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History Tab -->
+            <div class="tab-pane fade" id="v-pills-history" role="tabpanel" aria-labelledby="v-pills-history-tab">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-4">
+                            <h2 class="display-6 fw-bold text-dark">Historique des cours</h2>
+                            <p class="lead text-muted">Retrouve tes dernières sessions d'apprentissage</p>
+                        </div>
+
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-0">
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item d-flex align-items-center p-4">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-primary bg-opacity-10 rounded-circle p-3">
+                                                <i class="fas fa-calculator text-primary fs-5"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="mb-1 fw-bold">Cours de Mathématiques - Additions</h6>
+                                            <p class="mb-1 text-muted small">Session avec l'IA • 25 minutes</p>
+                                            <small class="text-muted">Aujourd'hui, 14:30</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="badge bg-success mb-2">85%</span><br>
+                                            <button class="btn btn-outline-primary btn-sm" onclick="resumeCourse('math-additions')">Reprendre</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="list-group-item d-flex align-items-center p-4">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-info bg-opacity-10 rounded-circle p-3">
+                                                <i class="fas fa-spell-check text-info fs-5"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="mb-1 fw-bold">Cours de Français - Conjugaison</h6>
+                                            <p class="mb-1 text-muted small">Session avec l'IA • 18 minutes</p>
+                                            <small class="text-muted">Hier, 16:15</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="badge bg-success mb-2">92%</span><br>
+                                            <button class="btn btn-outline-primary btn-sm" onclick="resumeCourse('francais-conjugaison')">Revoir</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="list-group-item d-flex align-items-center p-4">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-primary bg-opacity-10 rounded-circle p-3">
+                                                <i class="fas fa-minus text-primary fs-5"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="mb-1 fw-bold">Cours de Mathématiques - Soustractions</h6>
+                                            <p class="mb-1 text-muted small">Session avec l'IA • 22 minutes</p>
+                                            <small class="text-muted">Hier, 10:45</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="badge bg-warning text-dark mb-2">78%</span><br>
+                                            <button class="btn btn-outline-primary btn-sm" onclick="resumeCourse('math-soustractions')">Reprendre</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="list-group-item d-flex align-items-center p-4">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-3">
+                                                <i class="fas fa-microscope text-success fs-5"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="mb-1 fw-bold">Cours de Sciences - Les animaux</h6>
+                                            <p class="mb-1 text-muted small">Session avec l'IA • 30 minutes</p>
+                                            <small class="text-muted">2 jours, 15:20</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="badge bg-success mb-2">88%</span><br>
+                                            <button class="btn btn-outline-primary btn-sm" onclick="resumeCourse('sciences-animaux')">Revoir</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="list-group-item d-flex align-items-center p-4">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-warning bg-opacity-10 rounded-circle p-3">
+                                                <i class="fas fa-language text-warning fs-5"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="mb-1 fw-bold">Cours d'Anglais - Les couleurs</h6>
+                                            <p class="mb-1 text-muted small">Session avec l'IA • 15 minutes</p>
+                                            <small class="text-muted">3 jours, 11:30</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="badge bg-success mb-2">95%</span><br>
+                                            <button class="btn btn-outline-primary btn-sm" onclick="resumeCourse('anglais-couleurs')">Revoir</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Tab -->
+            <div class="tab-pane fade" id="v-pills-progress" role="tabpanel" aria-labelledby="v-pills-progress-tab">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-4">
+                            <h2 class="display-6 fw-bold text-dark">Ma progression</h2>
+                            <p class="lead text-muted">Suis tes progrès dans chaque matière</p>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-lg-6">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="bg-primary bg-opacity-10 rounded-circle p-3 me-3">
+                                                <i class="fas fa-calculator text-primary fs-4"></i>
+                                            </div>
+                                            <div>
+                                                <h5 class="card-title mb-1">Mathématiques</h5>
+                                                <small class="text-muted">Niveau CE2</small>
+                                            </div>
+                                        </div>
+                                        <div class="progress mb-3" style="height: 10px;">
+                                            <div class="progress-bar bg-primary" style="width: 75%"></div>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <small class="text-muted">75% complété</small>
+                                            <small class="text-muted">12/16 chapitres</small>
+                                        </div>
+                                        <div>
+                                            <span class="badge bg-success me-2 mb-2">🏆 Addition</span>
+                                            <span class="badge bg-success me-2 mb-2">🏆 Soustraction</span>
+                                            <span class="badge bg-secondary me-2 mb-2">⏳ Multiplication</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="bg-info bg-opacity-10 rounded-circle p-3 me-3">
+                                                <i class="fas fa-book text-info fs-4"></i>
+                                            </div>
+                                            <div>
+                                                <h5 class="card-title mb-1">Français</h5>
+                                                <small class="text-muted">Niveau CE2</small>
+                                            </div>
+                                        </div>
+                                        <div class="progress mb-3" style="height: 10px;">
+                                            <div class="progress-bar bg-info" style="width: 60%"></div>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <small class="text-muted">60% complété</small>
+                                            <small class="text-muted">9/15 chapitres</small>
+                                        </div>
+                                        <div>
+                                            <span class="badge bg-success me-2 mb-2">🏆 Conjugaison</span>
+                                            <span class="badge bg-secondary me-2 mb-2">⏳ Orthographe</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="bg-success bg-opacity-10 rounded-circle p-3 me-3">
+                                                <i class="fas fa-microscope text-success fs-4"></i>
+                                            </div>
+                                            <div>
+                                                <h5 class="card-title mb-1">Sciences</h5>
+                                                <small class="text-muted">Niveau CE2</small>
+                                            </div>
+                                        </div>
+                                        <div class="progress mb-3" style="height: 10px;">
+                                            <div class="progress-bar bg-success" style="width: 45%"></div>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <small class="text-muted">45% complété</small>
+                                            <small class="text-muted">5/11 chapitres</small>
+                                        </div>
+                                        <div>
+                                            <span class="badge bg-success me-2 mb-2">🏆 Les animaux</span>
+                                            <span class="badge bg-secondary me-2 mb-2">⏳ Les plantes</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="bg-warning bg-opacity-10 rounded-circle p-3 me-3">
+                                                <i class="fas fa-language text-warning fs-4"></i>
+                                            </div>
+                                            <div>
+                                                <h5 class="card-title mb-1">Anglais</h5>
+                                                <small class="text-muted">Débutant</small>
+                                            </div>
+                                        </div>
+                                        <div class="progress mb-3" style="height: 10px;">
+                                            <div class="progress-bar bg-warning" style="width: 30%"></div>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <small class="text-muted">30% complété</small>
+                                            <small class="text-muted">3/10 chapitres</small>
+                                        </div>
+                                        <div>
+                                            <span class="badge bg-success me-2 mb-2">🏆 Couleurs</span>
+                                            <span class="badge bg-secondary me-2 mb-2">⏳ Nombres</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Tab -->
+            <div class="tab-pane fade" id="v-pills-chat" role="tabpanel" aria-labelledby="v-pills-chat-tab">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-4">
+                            <h2 class="display-6 fw-bold text-dark">Assistant IA - Cours de Calculs</h2>
+                            <p class="lead text-muted">Apprends les mathématiques avec ton assistant personnel</p>
+                        </div>
+
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-0" style="height: 600px; display: flex; flex-direction: column;">
+                                <div class="flex-grow-1 overflow-auto p-4" id="chat-messages">
+                                    
+                                    <!-- AI Message -->
+                                    <div class="d-flex mb-3">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                                <i class="fas fa-robot text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <div class="bg-light rounded-3 p-3">
+                                                <p class="mb-2">Salut Mouhamed ! 👋 Je suis ton assistant IA pour les mathématiques. Aujourd'hui, nous allons travailler sur les additions. Es-tu prêt à commencer ?</p>
+                                                <small class="text-muted">14:30</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- User Message -->
+                                    <div class="d-flex justify-content-end mb-3">
+                                        <div class="flex-grow-1 me-3">
+                                            <div class="bg-primary text-white rounded-3 p-3 ms-auto" style="max-width: 80%;">
+                                                <p class="mb-2">Oui, je suis prêt ! J'aime bien les additions.</p>
+                                                <small class="opacity-75">14:31</small>
+                                            </div>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-success rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                                <i class="fas fa-user text-white"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- AI Message -->
+                                    <div class="d-flex mb-3">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                                <i class="fas fa-robot text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <div class="bg-light rounded-3 p-3">
+                                                <p class="mb-2">Super ! Commençons par un exercice simple. Peux-tu me dire combien font 15 + 8 ? Prends ton temps pour réfléchir ! 🤔</p>
+                                                <small class="text-muted">14:31</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- User Message -->
+                                    <div class="d-flex justify-content-end mb-3">
+                                        <div class="flex-grow-1 me-3">
+                                            <div class="bg-primary text-white rounded-3 p-3 ms-auto" style="max-width: 80%;">
+                                                <p class="mb-2">Euh... je pense que ça fait 23 ?</p>
+                                                <small class="opacity-75">14:32</small>
+                                            </div>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-success rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                                <i class="fas fa-user text-white"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- AI Message -->
+                                    <div class="d-flex mb-3">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                                <i class="fas fa-robot text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <div class="bg-light rounded-3 p-3">
+                                                <p class="mb-2">Excellent ! 🎉 Tu as trouvé la bonne réponse : 15 + 8 = 23. Bravo Mouhamed ! Tu peux essayer une technique : 15 + 5 = 20, puis 20 + 3 = 23. Essayons maintenant avec 27 + 15 !</p>
+                                                <small class="text-muted">14:33</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- User Message -->
+                                    <div class="d-flex justify-content-end mb-3">
+                                        <div class="flex-grow-1 me-3">
+                                            <div class="bg-primary text-white rounded-3 p-3 ms-auto" style="max-width: 80%;">
+                                                <p class="mb-2">Mmm, je vais utiliser ta méthode... 27 + 10 = 37, puis 37 + 5 = 42 !</p>
+                                                <small class="opacity-75">14:35</small>
+                                            </div>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-success rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                                <i class="fas fa-user text-white"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- AI Message -->
+                                    <div class="d-flex mb-3">
+                                        <div class="flex-shrink-0">
+                                            <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                                <i class="fas fa-robot text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <div class="bg-light rounded-3 p-3">
+                                                <p class="mb-2">Parfait ! 🌟 Tu maîtrises très bien cette technique ! 27 + 15 = 42. Tu progresses vraiment bien. Veux-tu qu'on passe aux soustractions ou préfères-tu d'autres additions plus difficiles ?</p>
+                                                <small class="text-muted">14:36</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- Chat Input -->
+                                <div class="border-top p-3 bg-light">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="chat-input" placeholder="Tape ta réponse ici..." onkeypress="handleChatInput(event)">
+                                        <button class="btn btn-primary" type="button" onclick="sendMessage()">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </button>
+                                    </div>
+                                    <div class="d-flex gap-2 flex-wrap justify-content-center">
+                                        <button class="btn btn-outline-info btn-sm" onclick="getHint()">
+                                            <i class="fas fa-lightbulb me-1"></i>Aide
+                                        </button>
+                                        <button class="btn btn-outline-primary btn-sm" onclick="nextExercise()">
+                                            <i class="fas fa-forward me-1"></i>Suivant
+                                        </button>
+                                        <button class="btn btn-outline-danger btn-sm" onclick="endSession()">
+                                            <i class="fas fa-flag me-1"></i>Terminer
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <style>
+        .action-card, .subject-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-card:hover, .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+        }
+
+        .nav-pills .nav-link {
+            color: #6c757d;
+            background: transparent;
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .nav-pills .nav-link:hover {
+            background-color: #f5f5f5;
+        }
+
+        .offcanvas-body .nav-link {
+            border-radius: 0 !important;
+            transition: all 0.3s ease;
+        }
+
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+
+        #chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #chat-messages::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        #chat-messages::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 3px;
+        }
+
+        #chat-messages::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        @media (max-width: 768px) {
+            .offcanvas {
+                width: 280px !important;
+            }
+            
+            .card-body.p-4 {
+                padding: 1.5rem !important;
+            }
+            
+            .list-group-item.p-4 {
+                padding: 1rem !important;
+            }
+            
+            .display-6 {
+                font-size: 2rem !important;
+            }
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Navigation functions
+        function showCourses() {
+            const tab = new bootstrap.Tab(document.getElementById('v-pills-courses-tab'));
+            tab.show();
+            bootstrap.Offcanvas.getInstance(document.getElementById('offcanvasSidebar')).hide();
+        }
+
+        function showHistory() {
+            const tab = new bootstrap.Tab(document.getElementById('v-pills-history-tab'));
+            tab.show();
+            bootstrap.Offcanvas.getInstance(document.getElementById('offcanvasSidebar')).hide();
+        }
+
+        function showProgress() {
+            const tab = new bootstrap.Tab(document.getElementById('v-pills-progress-tab'));
+            tab.show();
+            bootstrap.Offcanvas.getInstance(document.getElementById('offcanvasSidebar')).hide();
+        }
+
+        function showChat() {
+            const tab = new bootstrap.Tab(document.getElementById('v-pills-chat-tab'));
+            tab.show();
+            bootstrap.Offcanvas.getInstance(document.getElementById('offcanvasSidebar')).hide();
+        }
+
+        // Course functions
+        function startCourse(subject) {
+            alert(`Démarrage du cours de ${subject}...`);
+            showChat();
+        }
+
+        function resumeCourse(courseId) {
+            alert(`Reprise du cours ${courseId}...`);
+            showChat();
+        }
+
+        function switchChild() {
+            const select = document.getElementById('child-select');
+            const selectedChild = select.value;
+            
+            const headerTitles = document.querySelectorAll('.display-6');
+            headerTitles.forEach(title => {
+                if (title.textContent.includes('Bienvenue')) {
+                    if (selectedChild === 'Mouhamed') {
+                        title.textContent = 'Bienvenue, Mouhamed ! 👋';
+                    } else if (selectedChild === 'emma') {
+                        title.textContent = 'Bienvenue, Emma ! 👋';
+                    }
+                }
+            });
+        }
+
+        // Chat functions
+        function handleChatInput(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            
+            if (message) {
+                addMessageToChat(message, 'user');
+                input.value = '';
+                
+                setTimeout(() => {
+                    const aiResponse = generateAIResponse(message);
+                    addMessageToChat(aiResponse, 'ai');
+                }, 1000);
+            }
+        }
+
+        function addMessageToChat(message, sender) {
+            const chatMessages = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            
+            const now = new Date();
+            const time = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+            
+            if (sender === 'ai') {
+                messageDiv.className = 'd-flex mb-3';
+                messageDiv.innerHTML = `
+                    <div class="flex-shrink-0">
+                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                            <i class="fas fa-robot text-white"></i>
+                        </div>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <div class="bg-light rounded-3 p-3">
+                            <p class="mb-2">${message}</p>
+                            <small class="text-muted">${time}</small>
+                        </div>
+                    </div>
+                `;
+            } else {
+                messageDiv.className = 'd-flex justify-content-end mb-3';
+                messageDiv.innerHTML = `
+                    <div class="flex-grow-1 me-3">
+                        <div class="bg-primary text-white rounded-3 p-3 ms-auto" style="max-width: 80%;">
+                            <p class="mb-2">${message}</p>
+                            <small class="opacity-75">${time}</small>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <div class="bg-success rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function generateAIResponse(userMessage) {
+            const responses = [
+                "C'est une bonne réponse ! Continuons avec un autre exercice.",
+                "Hmm, pas tout à fait. Essaie de décomposer le problème étape par étape.",
+                "Excellent ! Tu progresses vraiment bien. Veux-tu essayer quelque chose de plus difficile ?",
+                "Je vois que tu réfléchis bien. Prends ton temps pour trouver la solution.",
+                "Bravo ! Ta méthode de calcul est parfaite. Passons au suivant !"
+            ];
+            
+            return responses[Math.floor(Math.random() * responses.length)];
+        }
+
+        function getHint() {
+            addMessageToChat("💡 Astuce : Pour additionner facilement, tu peux décomposer les nombres en dizaines et unités !", 'ai');
+        }
+
+        function nextExercise() {
+            addMessageToChat("Parfait ! Voici un nouvel exercice : Combien font 34 + 18 ? 🤔", 'ai');
+        }
+
+        function endSession() {
+            if (confirm('Veux-tu vraiment terminer cette session ?')) {
+                addMessageToChat("Excellente session ! Tu as fait de super progrès aujourd'hui. À bientôt ! 🌟", 'ai');
+                setTimeout(() => {
+                    const tab = new bootstrap.Tab(document.getElementById('v-pills-dashboard-tab'));
+                    tab.show();
+                }, 2000);
+            }
+        }
+
+        function logout() {
+            if (confirm('Êtes-vous sûr de vouloir vous déconnecter ?')) {
+                alert('Déconnexion en cours...');
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Auto-hide offcanvas when tab is selected
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('[data-bs-toggle="pill"]');
+            const offcanvasElement = document.getElementById('offcanvasSidebar');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('shown.bs.tab', function() {
+                    const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement);
+                    if (offcanvasInstance) {
+                        offcanvasInstance.hide();
+                    }
+                });
+            });
+
+            // Auto-scroll chat to bottom
+            const chatMessages = document.getElementById('chat-messages');
+            if (chatMessages) {
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>
